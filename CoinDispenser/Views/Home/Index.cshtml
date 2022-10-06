@@ -1,0 +1,25 @@
+﻿@model List<CoinLookup>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Coin Dispenser</h1>
+    @using (Html.BeginForm("GetCoins","Home", FormMethod.Post))
+    {
+        <b>Amount</b>
+        <input id="txtAmount" name="txtAmount" type="text" />
+    <input type="submit" value="Get Coins" onclick="location.href='@Url.Action("GetCoins","Home")'" />
+    }
+
+    @if (Model != null)
+    {
+        @foreach (var coin in Model)
+        {
+        <p>@Html.DisplayFor(m => coin.Name)</p>  
+        }
+    }
+    
+
+</div>
